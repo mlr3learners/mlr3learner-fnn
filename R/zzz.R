@@ -12,4 +12,5 @@
 
   # add the learner to the dictionary
   x$add("classif.fnn", LearnerClassifFNN)
+  x$add("regr.fnn", LearnerRegrFNN)
 } # nocov end
