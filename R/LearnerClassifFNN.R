@@ -37,26 +37,26 @@ LearnerClassifFNN <- R6Class("LearnerClassifFNN",
     },
 
     predict_internal = function(task) {
-      model = self$model
-      newdata = task$data(cols = task$feature_names)
+      model <- self$model
+      newdata <- task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {
-        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], .args = model$pars)
-        attr(p, "nn.index") = NULL
-        attr(p, "nn.dist") = NULL
+        p <- invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], .args = model$pars)
+        attr(p, "nn.index") <- NULL
+        attr(p, "nn.dist") <- NULL
         PredictionClassif$new(task = task, response = p)
       } else {
-        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
+        p <- invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
 
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
 
         # Predicted probabilities refer to the winning class
-        prob = attr(p, "prob")
-        p = ifelse(p == task$positive, prob, 1 - prob)
-        p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
-        colnames(p) = task$class_names
+        prob <- attr(p, "prob")
+        p <- ifelse(p == task$positive, prob, 1 - prob)
+        p <- matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
+        colnames(p) <- task$class_names
         PredictionClassif$new(task = task, prob = p)
       }
     }
