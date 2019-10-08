@@ -1,10 +1,10 @@
 #' @title Classification fnn Learner
 #'
 #' @aliases mlr_learners_classif.fnn
-#' @format [R6::R6Class] inheriting from [LearnerClassif].
+#' @format [R6::R6Class] inheriting from [mlr3::LearnerClassif].
 #'
 #' @description
-#' A [LearnerClassif] for a classification fnn implemented in FNN::knn()] in package \CRANpkg{FNN}.
+#' A [mlr3::LearnerClassif] for a classification fnn implemented in [FNN::knn()] in package \CRANpkg{FNN}.
 #'
 #' @export
 LearnerClassifFNN <- R6Class("LearnerClassifFNN",
@@ -13,8 +13,8 @@ LearnerClassifFNN <- R6Class("LearnerClassifFNN",
     initialize = function() {
       ps <- ParamSet$new(
         params = list(
-          ParamInt$new(id = "k", default = 1, lower = 1L, tags = c("train")),
-          ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = c("train"))
+          ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
+          ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
         )
       )
 
@@ -37,26 +37,24 @@ LearnerClassifFNN <- R6Class("LearnerClassifFNN",
     },
 
     predict_internal = function(task) {
-      model <- self$model
-      newdata <- task$data(cols = task$feature_names)
+      model = self$model
+      newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {
-        p <- invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], .args = model$pars)
-        attr(p, "nn.index") <- NULL
-        attr(p, "nn.dist") <- NULL
+        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], .args = model$pars)
         PredictionClassif$new(task = task, response = p)
       } else {
-        p <- invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
+        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
 
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
 
         # Predicted probabilities refer to the winning class
-        prob <- attr(p, "prob")
-        p <- ifelse(p == task$positive, prob, 1 - prob)
-        p <- matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
-        colnames(p) <- task$class_names
+        prob = attr(p, "prob")
+        p = ifelse(p == task$positive, prob, 1 - prob)
+        p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
+        colnames(p) = task$class_names
         PredictionClassif$new(task = task, prob = p)
       }
     }

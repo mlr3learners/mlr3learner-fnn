@@ -5,11 +5,11 @@
 \alias{LearnerRegrFNN}
 \alias{mlr_learners_regr.fnn}
 \title{Regression fnn Learner}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{LearnerRegr}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerRegr]{mlr3::LearnerRegr}.}
 \usage{
 LearnerRegrFNN
 }
 \description{
-A \link{LearnerRegr} for a regression fnn implemented in FNN::knn()] in package \CRANpkg{FNN}.
+A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression fnn implemented in \code{\link[FNN:knn]{FNN::knn()}} in package \CRANpkg{FNN}.
 }
 \keyword{datasets}

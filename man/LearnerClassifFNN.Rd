@@ -5,11 +5,11 @@
 \alias{LearnerClassifFNN}
 \alias{mlr_learners_classif.fnn}
 \title{Classification fnn Learner}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link{LearnerClassif}.}
+\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.}
 \usage{
 LearnerClassifFNN
 }
 \description{
-A \link{LearnerClassif} for a classification fnn implemented in FNN::knn()] in package \CRANpkg{FNN}.
+A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification fnn implemented in \code{\link[FNN:knn]{FNN::knn()}} in package \CRANpkg{FNN}.
 }
 \keyword{datasets}

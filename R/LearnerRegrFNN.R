@@ -1,10 +1,10 @@
 #' @title Regression fnn Learner
 #'
 #' @aliases mlr_learners_regr.fnn
-#' @format [R6::R6Class] inheriting from [LearnerRegr].
+#' @format [R6::R6Class] inheriting from [mlr3::LearnerRegr].
 #'
 #' @description
-#' A [LearnerRegr] for a regression fnn implemented in FNN::knn()] in package \CRANpkg{FNN}.
+#' A [mlr3::LearnerRegr] for a regression fnn implemented in [FNN::knn()] in package \CRANpkg{FNN}.
 #'
 #' @export
 LearnerRegrFNN <- R6Class("LearnerRegrFNN",
@@ -13,8 +13,8 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
     initialize = function() {
       ps <- ParamSet$new(
         params = list(
-          ParamInt$new(id = "k", default = 1, lower = 1L, tags = c("train")),
-          ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = c("train"))
+          ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
+          ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
         )
       )
 
@@ -36,10 +36,10 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
     },
 
     predict_internal = function(task) {
-      model <- self$model
-      newdata <- task$data(cols = task$feature_names)
+      model = self$model
+      newdata = task$data(cols = task$feature_names)
 
-      p <- invoke(FNN::knn.reg, train = model$data, test = newdata, y = model$target[[1]], .args = model$pars)
+      p = invoke(FNN::knn.reg, train = model$data, test = newdata, y = model$target[[1]], .args = model$pars)
       PredictionRegr$new(task = task, response = p$pred)
     }
   )
