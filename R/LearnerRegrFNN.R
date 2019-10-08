@@ -29,17 +29,18 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
 
     train_internal = function(task) {
       list(
-        target = task$data(cols = task$target_names),
-        data = task$data(cols = task$feature_names),
+        data = task$data(),
         pars = self$param_set$get_values(tags = "train")
       )
     },
 
     predict_internal = function(task) {
       model = self$model
+      train = model$data[,task$feature_names, with=FALSE]
+      target = model$data[,task$target_names, with=FALSE][[1]]
       newdata = task$data(cols = task$feature_names)
 
-      p = invoke(FNN::knn.reg, train = model$data, test = newdata, y = model$target[[1]], .args = model$pars)
+      p = invoke(FNN::knn.reg, train = train, test = newdata, y = target, .args = model$pars)
       PredictionRegr$new(task = task, response = p$pred)
     }
   )
