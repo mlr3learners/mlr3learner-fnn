@@ -11,7 +11,7 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
   inherit = LearnerRegr,
   public = list(
     initialize = function() {
-      ps <- ParamSet$new(
+      ps = ParamSet$new(
         params = list(
           ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
           ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
