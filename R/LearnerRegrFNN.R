@@ -22,7 +22,7 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
         id = "regr.fnn",
         packages = "FNN",
         feature_types = c("integer", "numeric"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = ps,
       )
     },
