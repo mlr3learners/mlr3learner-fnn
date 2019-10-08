@@ -44,11 +44,10 @@ LearnerClassifFNN <- R6Class("LearnerClassifFNN",
         p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], .args = model$pars)
         PredictionClassif$new(task = task, response = p)
       } else {
-        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
-
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
+        p = invoke(FNN::knn, train = model$data, test = newdata, cl = model$target[[1]], prob = TRUE, .args = model$pars)
 
         # Predicted probabilities refer to the winning class
         prob = attr(p, "prob")
