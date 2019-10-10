@@ -1,4 +1,4 @@
 library(testthat)
-library(mlr3learnerfnn)
+library(mlr3learner.fnn)
 
-test_check("mlr3learnerfnn")
+test_check("mlr3learner.fnn")

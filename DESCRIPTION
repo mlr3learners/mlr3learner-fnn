@@ -1,4 +1,4 @@
-Package: mlr3learnerfnn
+Package: mlr3learner.fnn
 Title: knn learner from FNN package for mlr3
 Version: 0.1.0
 Authors@R:

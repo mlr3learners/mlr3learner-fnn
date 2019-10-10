@@ -3,8 +3,8 @@
 
 This package adds `knn` from the `FNN` package to `mlr3`.
 
-Install the latest version of `mlr3learner-fnn` with:
+Install the latest version of `mlr3learner.fnn` with:
 
 ```r
-remotes::install_github("mlr3learners/mlr3learner-fnn")
+remotes::install_github("mlr3learners/mlr3learner.fnn")
 ```
