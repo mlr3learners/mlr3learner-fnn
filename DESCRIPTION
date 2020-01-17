@@ -2,11 +2,10 @@ Package: mlr3learners.fnn
 Title: knn learner from FNN package for mlr3
 Version: 0.1.0
 Authors@R:
-    c(person(given = "Marc",
-             family = "Becker",
-             role = "cre",
-             email = "marcbecker@posteo.de")
-      )
+    person(given = "Marc",
+           family = "Becker",
+           role = "cre",
+           email = "marcbecker@posteo.de")
 Description: knn learner from FNN package for mlr3.
 License: LGPL-3
 Depends:
@@ -14,19 +13,15 @@ Depends:
 Imports:
     checkmate,
     data.table,
+    FNN,
     mlr3,
     mlr3misc,
     paradox,
-    R6,
-    FNN
+    R6
 Suggests:
-    testthat,
-    rmarkdown
-Remotes:
-    mlr-org/mlr3,
-    mlr-org/mlr3misc,
-    mlr-org/paradox
+    rmarkdown,
+    testthat
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
