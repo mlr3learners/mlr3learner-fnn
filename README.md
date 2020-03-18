@@ -8,7 +8,15 @@
 
 This package adds `knn` from the `FNN` package to `mlr3`.
 
-Install the latest version of `mlr3learners.fnn` with:
+Install the latest release of the package via 
+
+```r
+install.packages("mlr3learners.fnn")
+```
+
+by following the instructions in the [mlr3learners.drat](https://github.com/mlr3learners/mlr3learners.drat) README.
+
+Alternatively, you can install the latest version of `mlr3learners.mboost` from Github with:
 
 ```r
 remotes::install_github("mlr3learners/mlr3learners.fnn")
