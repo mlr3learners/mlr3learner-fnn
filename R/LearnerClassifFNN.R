@@ -1,20 +1,24 @@
 #' @title Classification fnn Learner
 #'
-#' @aliases mlr_learners_classif.fnn
-#' @format [R6::R6Class] inheriting from [mlr3::LearnerClassif].
+#' @name mlr_learners_classif.fnn
 #'
-#' @description
-#' A [mlr3::LearnerClassif] for a classification fnn implemented in [FNN::knn()] in package \CRANpkg{FNN}.
+#' @description A [mlr3::LearnerClassif] for a classification fnn implemented in
+#' [FNN::knn()] in package \CRANpkg{FNN}.
 #'
 #' @export
 LearnerClassifFNN <- R6Class("LearnerClassifFNN",
   inherit = LearnerClassif,
+
   public = list(
+
+    #' @description
+    #' Create a `LearnerClassifFNN` object.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
           ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
-          ParamFct$new(id = "algorithm", default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
+          ParamFct$new(id = "algorithm", default = "kd_tree",
+            levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
         )
       )
 
@@ -24,31 +28,36 @@ LearnerClassifFNN <- R6Class("LearnerClassifFNN",
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("twoclass", "multiclass")
+        properties = c("twoclass", "multiclass"),
+        man = "mlr3learners.fnn::mlr_learners_classif.fnn"
       )
-    },
+    }),
 
-    train_internal = function(task) {
+  private = list(
+
+    .train = function(task) {
       list(
         data = task$data(),
         pars = self$param_set$get_values(tags = "train")
       )
     },
 
-    predict_internal = function(task) {
+    .predict = function(task) {
       model = self$model
-      train = model$data[,task$feature_names, with=FALSE]
-      target = model$data[,task$target_names, with=FALSE][[1]]
+      train = model$data[, task$feature_names, with = FALSE]
+      target = model$data[, task$target_names, with = FALSE][[1]]
       newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {
-        p = invoke(FNN::knn, train = train, test = newdata, cl = target, .args = model$pars)
+        p = invoke(FNN::knn, train = train, test = newdata, cl = target,
+          .args = model$pars)
         PredictionClassif$new(task = task, response = p)
       } else {
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
-        p = invoke(FNN::knn, train = train, test = newdata, cl = target, prob = TRUE, .args = model$pars)
+        p = invoke(FNN::knn, train = train, test = newdata, cl = target,
+          prob = TRUE, .args = model$pars)
 
         # Predicted probabilities refer to the winning class
         prob = attr(p, "prob")

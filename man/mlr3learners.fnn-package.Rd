@@ -11,4 +11,9 @@ knn learner from FNN package for mlr3.
 \author{
 \strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de}
 
+Authors:
+\itemize{
+  \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+}
+
 }

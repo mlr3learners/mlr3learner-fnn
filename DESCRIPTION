@@ -2,10 +2,15 @@ Package: mlr3learners.fnn
 Title: knn learner from FNN package for mlr3
 Version: 0.1.0.9000
 Authors@R:
-    person(given = "Marc",
-           family = "Becker",
-           role = "cre",
-           email = "marcbecker@posteo.de")
+    c(person(given = "Marc",
+             family = "Becker",
+             role = c("aut", "cre"),
+             email = "marcbecker@posteo.de"),
+      person(given = "Patrick",
+             family = "Schratz",
+             role = "aut",
+             email = "patrick.schratz@gmail.com",
+             comment = c(ORCID = "0000-0003-0748-6624")))
 Description: knn learner from FNN package for mlr3.
 License: LGPL-3
 Depends:
@@ -24,4 +29,4 @@ Suggests:
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
