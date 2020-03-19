@@ -6,7 +6,7 @@
 #' [FNN::knn()] in package \CRANpkg{FNN}.
 #'
 #' @export
-LearnerRegrFNN <- R6Class("LearnerRegrFNN",
+LearnerRegrFNN = R6Class("LearnerRegrFNN",
   inherit = LearnerRegr,
 
   public = list(
@@ -17,8 +17,10 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
       ps = ParamSet$new(
         params = list(
           ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
-          ParamFct$new(id = "algorithm", default = "kd_tree",
-            levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
+          ParamFct$new(
+            id = "algorithm", default = "kd_tree",
+            levels = c("kd_tree", "cover_tree", "brute"), tags = "train"
+          )
         )
       )
 
@@ -30,10 +32,10 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
         param_set = ps,
         man = "mlr3learners.fnn::mlr_learners_regr.fnn"
       )
-    }),
+    }
+  ),
 
   private = list(
-
     .train = function(task) {
       list(
         data = task$data(),
@@ -47,8 +49,10 @@ LearnerRegrFNN <- R6Class("LearnerRegrFNN",
       target = model$data[, task$target_names, with = FALSE][[1]]
       newdata = task$data(cols = task$feature_names)
 
-      p = invoke(FNN::knn.reg, train = train, test = newdata, y = target,
-        .args = model$pars)
+      p = invoke(FNN::knn.reg,
+        train = train, test = newdata, y = target,
+        .args = model$pars
+      )
       PredictionRegr$new(task = task, response = p$pred)
     }
   )
