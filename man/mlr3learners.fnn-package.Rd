@@ -8,6 +8,13 @@
 \description{
 knn learner from FNN package for mlr3.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/mlr3learners/mlr3learners.fnn}
+}
+
+}
 \author{
 \strong{Maintainer}: Marc Becker \email{marcbecker@posteo.de}
 
