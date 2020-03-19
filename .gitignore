@@ -24,3 +24,4 @@ inst/doc
 .Rproj.user
 .Rprofile
 renv
+.vscode/
