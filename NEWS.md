@@ -1,3 +1,8 @@
+# mlr3learners.fnn 0.2.0.9000
+
+- Same as previous version.
+
+
 # mlr3learners.fnn 0.2.0
 
 - Use `$help()` method from super class
