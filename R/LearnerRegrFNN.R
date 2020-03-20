@@ -1,6 +1,7 @@
 #' @title Regression fnn Learner
 #'
 #' @name mlr_learners_regr.fnn
+#' @importFrom FNN knn
 #'
 #' @description A [mlr3::LearnerRegr] for a regression fnn implemented in
 #' [FNN::knn()] in package \CRANpkg{FNN}.
