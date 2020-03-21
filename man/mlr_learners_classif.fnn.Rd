@@ -54,7 +54,7 @@ if (requireNamespace("FNN")) {
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
-Create a \code{LearnerClassifFNN} object.
+Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifFNN$new()}\if{html}{\out{</div>}}
 }

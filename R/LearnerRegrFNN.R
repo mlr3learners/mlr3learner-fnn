@@ -1,7 +1,6 @@
 #' @title Regression Fast Nearest Neighbor Search Learner
 #'
 #' @name mlr_learners_regr.fnn
-#' @importFrom FNN knn
 #'
 #' @description
 #' Regression fast nearest neighbor search learner.

@@ -17,7 +17,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
   public = list(
 
     #' @description
-    #' Create a `LearnerClassifFNN` object.
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
