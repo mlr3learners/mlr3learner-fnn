@@ -3,10 +3,29 @@
 \name{mlr_learners_classif.fnn}
 \alias{mlr_learners_classif.fnn}
 \alias{LearnerClassifFNN}
-\title{Classification fnn Learner}
+\title{Classification Fast Nearest Neighbor Search Learner}
 \description{
-A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification fnn implemented in
-\code{\link[FNN:knn]{FNN::knn()}} in package \CRANpkg{FNN}.
+Classification fast nearest neighbor search learner.
+Calls \code{\link[FNN:knn]{FNN::knn()}} from package \CRANpkg{FNN}.
+}
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.fnn")
+lrn("classif.fnn")
+}
+}
+
+\examples{
+if (requireNamespace("FNN")) {
+  learner = mlr3::lrn("classif.fnn")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
+\seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifFNN}

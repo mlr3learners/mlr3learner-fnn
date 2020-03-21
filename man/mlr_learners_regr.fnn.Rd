@@ -3,10 +3,29 @@
 \name{mlr_learners_regr.fnn}
 \alias{mlr_learners_regr.fnn}
 \alias{LearnerRegrFNN}
-\title{Regression fnn Learner}
+\title{Regression Fast Nearest Neighbor Search Learner}
 \description{
-A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression fnn implemented in
-\code{\link[FNN:knn]{FNN::knn()}} in package \CRANpkg{FNN}.
+Regression fast nearest neighbor search learner.
+Calls \code{\link[FNN:knn]{FNN::knn()}} from package \CRANpkg{FNN}.
+}
+\section{Dictionary}{
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.fnn")
+lrn("regr.fnn")
+}
+}
+
+\examples{
+if (requireNamespace("FNN")) {
+  learner = mlr3::lrn("regr.fnn")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
+\seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrFNN}
@@ -35,7 +54,7 @@ A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a regression fnn implemented in
 \if{html}{\out{<a id="method-new"></a>}}
 \if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
-Create a \code{LearnerRegrFNN} object.
+Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrFNN$new()}\if{html}{\out{</div>}}
 }

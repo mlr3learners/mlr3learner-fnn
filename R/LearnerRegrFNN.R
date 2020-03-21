@@ -1,19 +1,24 @@
-#' @title Regression fnn Learner
+#' @title Regression Fast Nearest Neighbor Search Learner
 #'
 #' @name mlr_learners_regr.fnn
 #' @importFrom FNN knn
 #'
-#' @description A [mlr3::LearnerRegr] for a regression fnn implemented in
-#' [FNN::knn()] in package \CRANpkg{FNN}.
+#' @description
+#' Regression fast nearest neighbor search learner.
+#' Calls [FNN::knn()] from package \CRANpkg{FNN}.
+#'
+#' @templateVar id regr.fnn
+#' @template section_dictionary_learner
 #'
 #' @export
+#' @template seealso_learner
+#' @template example
 LearnerRegrFNN = R6Class("LearnerRegrFNN",
   inherit = LearnerRegr,
-
   public = list(
 
     #' @description
-    #' Create a `LearnerRegrFNN` object.
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(

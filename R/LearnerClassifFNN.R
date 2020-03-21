@@ -1,14 +1,19 @@
-#' @title Classification fnn Learner
+#' @title Classification Fast Nearest Neighbor Search Learner
 #'
 #' @name mlr_learners_classif.fnn
 #'
-#' @description A [mlr3::LearnerClassif] for a classification fnn implemented in
-#' [FNN::knn()] in package \CRANpkg{FNN}.
+#' @description
+#' Classification fast nearest neighbor search learner.
+#' Calls [FNN::knn()] from package \CRANpkg{FNN}.
+#'
+#' @templateVar id classif.fnn
+#' @template section_dictionary_learner
 #'
 #' @export
+#' @template seealso_learner
+#' @template example
 LearnerClassifFNN = R6Class("LearnerClassifFNN",
   inherit = LearnerClassif,
-
   public = list(
 
     #' @description
