@@ -2,7 +2,6 @@
 
 export(LearnerClassifFNN)
 export(LearnerRegrFNN)
-import(checkmate)
 import(data.table)
 import(mlr3misc)
 import(paradox)
