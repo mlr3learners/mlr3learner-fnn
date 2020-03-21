@@ -4,9 +4,9 @@
 \name{mlr3learners.fnn-package}
 \alias{mlr3learners.fnn}
 \alias{mlr3learners.fnn-package}
-\title{mlr3learners.fnn: knn learner from FNN package for mlr3}
+\title{mlr3learners.fnn: Learners from FNN package for mlr3}
 \description{
-knn learner from FNN package for mlr3.
+Adds `knn()` from the FNN package to mlr3.
 }
 \seealso{
 Useful links:
