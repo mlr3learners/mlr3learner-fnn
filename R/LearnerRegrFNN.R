@@ -35,7 +35,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3learners.FNN::mlr_learners_regr.fnn"
+        man = "mlr3learners.fnn::mlr_learners_regr.fnn"
       )
     }
   ),

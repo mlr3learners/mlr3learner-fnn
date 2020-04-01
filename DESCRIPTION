@@ -21,10 +21,10 @@ Imports:
     mlr3,
     mlr3misc,
     paradox,
-    R6,
-    FNN
+    R6
 Suggests:
     checkmate,
+    FNN,
     testthat
 Encoding: UTF-8
 NeedsCompilation: no

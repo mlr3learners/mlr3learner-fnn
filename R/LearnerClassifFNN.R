@@ -36,7 +36,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3learners.FNN::mlr_learners_classif.fnn"
+        man = "mlr3learners.fnn::mlr_learners_classif.fnn"
       )
     }
   ),
