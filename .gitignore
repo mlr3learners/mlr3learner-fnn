@@ -25,3 +25,4 @@ inst/doc
 .Rprofile
 renv
 .vscode/
+.vscode
